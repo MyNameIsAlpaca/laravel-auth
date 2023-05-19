@@ -1,1 +1,1 @@
-Home admin
+<a href="{{route('admin.projects.index')}}">Vai ai progetti</a>
