@@ -24,9 +24,14 @@ Route::get('/', function () {
 Route::get('/guest/projects', [GuestController::class, 'index'])->name('guest.projects.index');
 
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
-    Route::resource('', ProjectController::class);
+    Route::resource('projects', ProjectController::class)->names([
+        'index' => 'admin.projects.index',
+        'create' => 'admin.projects.create',
+        'store' => 'admin.projects.store',
+        'show' => 'admin.projects.show',
+    ]);
     Route::get('/', [AdminController::class, 'home']);
 });
 
