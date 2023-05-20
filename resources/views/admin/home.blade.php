@@ -7,6 +7,8 @@
     <h1>Benvenuto nella tua pagina!</h1>
     <a href="{{ route('admin.projects.index') }}">Vai ai progetti</a>
     <a href="{{ route('admin.projects.create') }}">Vai al create</a>
+    
+
 
   </div>
 </div>
