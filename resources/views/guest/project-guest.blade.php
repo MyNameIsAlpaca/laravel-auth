@@ -21,7 +21,4 @@
     </div>
   </div>
 </div>
-<div id="loading">
-  <img id="loading-image" src="path/to/ajax-loader.gif" alt="Loading..." />
-</div>
 @endsection
