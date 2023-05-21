@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -40,6 +40,9 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validation($request);
+
         $data = $request->all();
 
         $newProject = new Project();
@@ -87,7 +90,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $this->validation($request);
+
+        $data = $request->all();
+
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -99,5 +109,29 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    private function validation($request)
+    {
+
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:100',
+            'desc' => 'required|max:200',
+            'language' => 'required|max:50',
+            'publication_date' => 'required',
+            'link' => 'required',
+        ], [
+            'name.required' => 'Il nome è necessario',
+            'name.max' => 'Il nome non può essere più lungo di 100 caratteri',
+            'desc.required' => 'Aggiungi una descrizione',
+            'desc.max' => 'La descrizione non può essere più lunga di 200 caratteri',
+            'language' => "Aggiungi il linguaggio utilizzato",
+            'language.max' => "Il linguaggio non può essere più lungo di 50 caratteri",
+            'publication_date.required' => 'Aggiungi la data di pubblicazione',
+            'link.required' => 'Aggiungi un link',
+
+        ])->validate();
     }
 }

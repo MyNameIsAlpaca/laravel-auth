@@ -8,25 +8,51 @@
     
     <form action="{{route('admin.projects.store')}}" method="POST">
     @csrf
+
     <div class="mb-3">
       <label for="name">Aggiungi un nome</label>
-      <input class="form-control" type="text" id="name" name="name">
+      <input required value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name">
+      @error('name')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+        @enderror
     </div>
     <div class="mb-3">
       <label for="desc">Aggiungi una descrizione</label>
-      <textarea class="form-control" id="desc" name="desc"></textarea>
+      <textarea required class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc">{{old('desc')}}</textarea>
+      @error('desc')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+        @enderror
     </div>
     <div class="mb-3">
       <label for="language">Aggiungi un linguaggio</label>
-      <input class="form-control" type="text" id="language" name="language">
+      <input required value="{{old('language')}}" class="form-control @error('language') is-invalid @enderror" type="text" id="language" name="language">
+      @error('language')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+        @enderror
     </div>
     <div class="mb-3">
       <label for="publication_date">Aggiungi una data di pubblicazione</label>
-      <input class="form-control" type="date" id="publication_date" name="publication_date">
+      <input required value="{{old('publication_date')}}" class="form-control @error('publication_date') is-invalid @enderror" type="date" id="publication_date" name="publication_date">
+      @error('publication_date')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+        @enderror
     </div>
     <div class="mb-3">
       <label for="link">Aggiungi un link</label>
-      <input class="form-control" type="text" id="link" name="link">
+      <input required value="{{old('link')}}" class="form-control @error('link') is-invalid @enderror" type="text" id="link" name="link">
+      @error('link')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+        @enderror
     </div>
     <button type="submit" class="btn btn-primary">Aggiungi</button>
     </form>
