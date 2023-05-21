@@ -15,7 +15,9 @@
             <div class="right-section">
                 <div class="title">
                     <h1>Gabriele Saragosa</h1>
-                    <span>- Web Developer Junior -</span> 
+                    <div class="container-type">
+                        <p class="typed">- Web Developer Junior -</p>
+                      </div>
                 </div>
             </div>
         </div>
