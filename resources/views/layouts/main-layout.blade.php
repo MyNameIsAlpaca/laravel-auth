@@ -24,14 +24,23 @@
     @include('layouts/partials/header')
     <div id="app">
 
-        <main class="">
+        <div id="main-content" class="page-content">
             @yield('content')
-        </main>
+        </div>
+        
     </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('main-content').style.display = 'block';
+        };
+    </script>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 
 </html>

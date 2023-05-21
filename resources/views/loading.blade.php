@@ -1,0 +1,3 @@
+<div class="loading">
+  Caricamento in corso...
+</div>
