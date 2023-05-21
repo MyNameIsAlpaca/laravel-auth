@@ -21,7 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/guest/projects', [GuestController::class, 'index'])->name('guest.projects.index');
+Route::resource('guest/projects', GuestController::class)->names([
+    'index' => 'guest.projects.index',
+    'create' => 'guest.projects.create',
+    'store' => 'guest.projects.store',
+    'show' => 'guest.projects.show',
+])->parameters([
+    'projects' => 'project:slug'
+]);
 
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
