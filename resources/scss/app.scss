@@ -59,11 +59,13 @@
       cursor: pointer;
       z-index: 10;
       transition: all .4s;
-      background:linear-gradient(135deg, #0FF0B3 0%,#036ED9 100%);
+      background:linear-gradient(135deg, #8b0517 0%,#A1051D 100%);
       padding: 10px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      color: white;
+      text-shadow: 2px 2px 3px #000000;
      }
      
      .card:hover .div {
