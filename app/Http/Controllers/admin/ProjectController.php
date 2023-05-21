@@ -78,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit_project');
+        return view('admin.projects.edit_project', compact('project'));
     }
 
     /**
@@ -108,7 +108,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 
     private function validation($request)
@@ -119,9 +121,9 @@ class ProjectController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:100',
             'desc' => 'required|max:200',
-            'language' => 'required|max:50',
+            'language' => 'required|max:30',
             'publication_date' => 'required',
-            'link' => 'required',
+            'link' => 'required|max:255',
         ], [
             'name.required' => 'Il nome è necessario',
             'name.max' => 'Il nome non può essere più lungo di 100 caratteri',
@@ -131,6 +133,7 @@ class ProjectController extends Controller
             'language.max' => "Il linguaggio non può essere più lungo di 50 caratteri",
             'publication_date.required' => 'Aggiungi la data di pubblicazione',
             'link.required' => 'Aggiungi un link',
+            'link.max' => 'Il link non può essere cosi lungo',
 
         ])->validate();
     }
