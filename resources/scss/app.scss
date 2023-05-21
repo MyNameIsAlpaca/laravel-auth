@@ -3,7 +3,13 @@
 
 //gestione header 
 
-
+.navbar{
+  background-color: #212121;
+  border-bottom: 3px solid white;
+  .nav-link{
+    color: white;
+  }
+}
 
 //Sezione per gestire la index dove verranno visualizzati tutti i progetti
 
